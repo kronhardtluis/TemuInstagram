@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { PostParam } from '../../../interfaces/post-interface';
 
 @Component({
   selector: 'app-post',
@@ -7,31 +8,14 @@ import { Component } from '@angular/core';
   styleUrl: './post.scss',
 })
 export class Post {
+  @Input() post!: PostParam;
 
+  toggleLike() {
+    this.post.isLiked = !this.post.isLiked;
+    if (this.post.isLiked) {
+      this.post.likes++;
+    } else {
+      this.post.likes--;
+    }
+  }
 }
-
-/**
- * {
-            name: 'Hans',
-            image: 'assets/img/Bella 1.jpg',
-            likes: 55,
-            isLiked: true,
-            comments: ['Tolle banane', 'Banana in the Box'],
-        },
-        {
-            name: 'Franz',
-            image: 'assets/img/gatze.jpg',
-            likes: 21,
-            isLiked: false,
-            comments: [],
-        },
-        {
-            name: 'Mama',
-            image: 'assets/img/gatze7.PNG',
-            likes: 274,
-            isLiked: true,
-            comments: ['Schöne Orangen.'],
-        },
-         */
-
-        // Hauptseite erstellen
